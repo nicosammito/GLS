@@ -63,6 +63,8 @@ main {
   background: #141ab1;
   background: linear-gradient(to bottom, #c0e2ad 0%, #c0e2ad 25%, #141ab1 25%);
   position: relative;
+  display: flex;
+  align-items: center;
   z-index: 0;
 
   &:before {
