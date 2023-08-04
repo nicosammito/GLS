@@ -72,7 +72,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
     }
 
     return <div className={styles["box"]} style={{
-        transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(100%) translateX(-50%)",
+        transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(200%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none"
     }}>
 

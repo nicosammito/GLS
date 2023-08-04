@@ -29,20 +29,19 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: scale(0) translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
         content: "";
-        width: 0.65rem;
-        height: 0.65rem;
-        border-radius: 50%;
+        opacity: 0;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50rem;
         background: #fad100;
         transition: 120ms transform ease-in-out;
         box-shadow: inset 1rem 1rem #fad100;
       }
 
       &:checked:before {
-        top: 50%;
-        left: 50%;
-        transform: scale(1) translateX(-50%) translateY(-50%);
+        opacity: 1;
       }
 
       &:checked+label:before {
