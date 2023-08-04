@@ -14,7 +14,7 @@ html{
   padding: 0;
   margin: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   font-family: gls_small, sans-serif;
 }
@@ -24,8 +24,10 @@ html{
 }
 
 body {
-  width: 100%;
+  width: 100vw;
   height: 100%;
+  padding: 0;
+  margin: 0;
   background: #141ab1;
   background: linear-gradient(180deg, #c0e2ad 0%, #c0e2ad 25%, #141ab1 25%, #141ab1 100%);
   background-repeat: no-repeat;
