@@ -9,15 +9,7 @@ interface HomeProps {
     staticPassword: boolean
 }
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-    return {
-        props: {
-            staticPassword: "Z2xzNDMwc2FtbWl0bw==" == Buffer.from(`${query.password}`).toString('base64')
-        }
-    }
-}
-
-const Home: NextPage<HomeProps> = ({staticPassword = false}) => {
+const Home: NextPage<HomeProps> = () => {
 
     const [clickedForword, setClickedForword] = useState(0);
 
