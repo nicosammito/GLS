@@ -30,7 +30,8 @@ jobs:
           npm run export
           touch out/.nojekyll
 
-    - name: Deploy
+      - name: Deploy
+        # https://github.com/JamesIves/github-pages-deploy-action
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
