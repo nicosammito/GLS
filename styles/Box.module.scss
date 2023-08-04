@@ -1,13 +1,12 @@
 .box {
   position: absolute;
   text-align: left;
-  padding: 2rem 2rem 6rem;
+  padding: 2rem 2rem 6rem 2rem;
+  height: fit-content;
   max-height: 75vh;
   left: 50%;
   right: 0;
-  top: 0;
-  bottom: 0;
-  height: fit-content;
+  top: 50%;
   width: 50vw;
   background: white;
   border-radius: 2rem;
@@ -19,17 +18,15 @@
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
+  overflow: hidden;
   hyphens: auto;
 
 
   &__content {
 
-    overflow: hidden;
     position: relative;
     overflow-y: auto;
     max-height: calc(75vh - 8rem);
-
-
     > span {
       display: block;
       color: black;
@@ -67,6 +64,7 @@
   }
 
   &__buttons {
+    z-index: 5;
     position: absolute;
     bottom: 2rem;
     left: 2rem;
@@ -82,6 +80,7 @@
   }
 
   &__points {
+    z-index: 5;
     display: none;
     position: absolute;
     bottom: 2rem;

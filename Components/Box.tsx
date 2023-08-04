@@ -75,6 +75,44 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
         transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(100%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none"
     }}>
+
+        <div className={styles["box__buttons"]}>
+            {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>zurück</button> : null}
+            {currentState < 7 ? <button onClick={event => {
+
+                console.log(config)
+
+                if (currentState == 2 && allowedState["3"] >= 12) {
+                    setAllowedState({...allowedState, 3: -1})
+                    setCurrentState(3)
+                } else if (currentState == 3 && allowedState["4"] == 1) {
+                    setAllowedState({...allowedState, 4: -1})
+                    setCurrentState(4)
+                } else if (currentState == 4 && allowedState["5"] == 1) {
+                    setAllowedState({...allowedState, 4: -1})
+                    setCurrentState(5)
+                } else if (currentState == 5 && allowedState["6"] == 1) {
+                    setAllowedState({...allowedState, 4: -1})
+                    setCurrentState(6)
+                } else if (currentState == 6 && allowedState["7"] == 1) {
+                    setAllowedState({...allowedState, 4: -1})
+                    setCurrentState(7)
+                }
+
+                if (allowedState[currentState + 1] === -1 && currentState < 7) setCurrentState(prevState => prevState + 1)
+            }}>weiter
+            </button> : null }
+        </div>
+
+        <div className={styles["box__points"]}>
+            {
+                [1, 2, 3, 4, 5, 6, 7].map(value => {
+                    return <span
+                        className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
+                })
+            }
+        </div>
+
         <div className={styles["box__content"]} style={{display: currentState == 1 ? "block" : "none"}}>
             <h1>Unser Markenversprechen</h1>
             <span>Bei GLS liefern wir nicht von A nach B. Wir liefern von Mensch zu Mensch. Wenn wir Pakete sehen, sehen wir nicht einfach nur Pakete. Wir sehen Menschen. Wenn wir an das denken, was in den Paketen ist, sehen wir keine Objekte – wir sehen Emotionen. In den Paketen stecken die Hoffnungen, Träume und Ziele unserer Versender und Empfänger.</span>
@@ -269,43 +307,6 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
 
         </div>
 
-
-        <div className={styles["box__buttons"]}>
-            {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>zurück</button> : null}
-            {currentState < 7 ? <button onClick={event => {
-
-                console.log(config)
-
-                if (currentState == 2 && allowedState["3"] >= 12) {
-                    setAllowedState({...allowedState, 3: -1})
-                    setCurrentState(3)
-                } else if (currentState == 3 && allowedState["4"] == 1) {
-                    setAllowedState({...allowedState, 4: -1})
-                    setCurrentState(4)
-                } else if (currentState == 4 && allowedState["5"] == 1) {
-                    setAllowedState({...allowedState, 4: -1})
-                    setCurrentState(5)
-                } else if (currentState == 5 && allowedState["6"] == 1) {
-                    setAllowedState({...allowedState, 4: -1})
-                    setCurrentState(6)
-                } else if (currentState == 6 && allowedState["7"] == 1) {
-                    setAllowedState({...allowedState, 4: -1})
-                    setCurrentState(7)
-                }
-
-                if (allowedState[currentState + 1] === -1 && currentState < 7) setCurrentState(prevState => prevState + 1)
-            }}>weiter
-            </button> : null }
-        </div>
-
-        <div className={styles["box__points"]}>
-            {
-                [1, 2, 3, 4, 5, 6, 7].map(value => {
-                    return <span
-                        className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
-                })
-            }
-        </div>
 
     </div>
 }

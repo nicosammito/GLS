@@ -10,61 +10,26 @@
 
 
 
-html,
-body {
+html{
   padding: 0;
   margin: 0;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  font-family: gls_small, sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-input {
-  padding: .5rem;
-  border: 1px solid rgba(black, .5);
-  box-shadow: none;
-  border-radius: 1rem;
-  outline: none;
-  font-size: 1.5rem;
-}
-
-h1,
-h2 {
-  font-family: gls, serif;
-  color: black;
-  margin: 0;
-}
-
-p,
-ul,
-span {
-  font-family: gls_small, sans-serif;
-  color: black;
-  margin: 0;
-}
-
-main {
-  width: 100vw;
-  height: 100vh;
+body {
+  width: 100%;
+  height: 100%;
   background: #141ab1;
-  background: linear-gradient(to bottom, #c0e2ad 0%, #c0e2ad 25%, #141ab1 25%);
-  position: relative;
-  display: flex;
-  align-items: center;
+  background: linear-gradient(180deg, #c0e2ad 0%, #c0e2ad 25%, #141ab1 25%, #141ab1 100%);
+  background-repeat: no-repeat;
+  display: block;
   z-index: 0;
 
   &:before {
@@ -93,6 +58,20 @@ main {
     background: white;
 
   }
+}
+
+h1,
+h2 {
+  font-family: gls, serif;
+  color: black;
+  margin: 0;
+}
+
+p,
+ul,
+span {
+  color: black;
+  margin: 0;
 }
 
 .main {
