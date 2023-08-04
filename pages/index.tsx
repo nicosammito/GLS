@@ -16,7 +16,7 @@ const Home: NextPage<HomeProps> = () => {
     return (
         <div>
             <Head>
-                <title>GLS - Markenversprechen</title>
+                <title>GLS - Markenversprechen </title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
