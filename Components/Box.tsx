@@ -10,7 +10,7 @@ interface BoxProps {
 const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
 
     const [currentState, setCurrentState] = useState(1);
-    const [allowedState, setAllowedState] = useState<{ 1: boolean | number }>({
+    const [allowedState, setAllowedState] = useState<{ 1: boolean | number, 2: boolean | number, 3: boolean | number, 4: boolean | number, 5: boolean | number, 6: boolean | number, 7: boolean | number }>({
         1: true,
         2: true,
         3: 0,
