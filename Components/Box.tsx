@@ -11,8 +11,8 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
 
     const [currentState, setCurrentState] = useState(1);
     const [allowedState, setAllowedState] = useState({
-        1: 0,
-        2: 0,
+        1: -1,
+        2: -1,
         3: 0,
         4: 0,
         5: 0,
@@ -256,7 +256,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
             <div className={styles["box__content__heading"]}>
                 <h1>Du bist unser Marken-Botschafter: {calculateWinner(config).name}</h1>
                 <div className={styles["box__content__heading__image"]}>
-                    <Image src={`/${calculateWinner(config).image}`} alt={"GLS"} width={200}
+                    <Image src={`https://cdn.statically.io/gh/nicosammito/GLS/gh-pages/${calculateWinner(config).image}`} alt={"GLS"} width={200}
                            height={200}/>
                 </div>
             </div>
