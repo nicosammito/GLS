@@ -110,11 +110,6 @@
 @media (max-width: 1000px) {
   .box {
     width: 100vw;
-    max-height: 90vh;
-
-    &__content {
-      max-height: calc(90vh - 8rem);
-    }
 
     &__points {
       display: none;
