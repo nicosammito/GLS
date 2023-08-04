@@ -1,7 +1,6 @@
 import styles from "../styles/Box.module.scss"
 import {FunctionComponent, useState} from "react";
 import RadioSelection from "./RadioSelection";
-import {boolean} from "zod";
 import Image from "next/image";
 
 interface BoxProps {
