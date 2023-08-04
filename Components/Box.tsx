@@ -10,9 +10,9 @@ interface BoxProps {
 const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
 
     const [currentState, setCurrentState] = useState(1);
-    const [allowedState, setAllowedState] = useState<{ 1: boolean | number, 2: boolean | number, 3: boolean | number, 4: boolean | number, 5: boolean | number, 6: boolean | number, 7: boolean | number }>({
-        1: true,
-        2: true,
+    const [allowedState, setAllowedState] = useState<>({
+        1: 0,
+        2: 0,
         3: 0,
         4: 0,
         5: 0,
@@ -277,23 +277,23 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
                 console.log(config)
 
                 if (currentState == 2 && allowedState["3"] >= 12) {
-                    setAllowedState({...allowedState, 3: true})
+                    setAllowedState({...allowedState, 3: -1})
                     setCurrentState(3)
                 } else if (currentState == 3 && allowedState["4"] == 1) {
-                    setAllowedState({...allowedState, 4: true})
+                    setAllowedState({...allowedState, 4: -1})
                     setCurrentState(4)
                 } else if (currentState == 4 && allowedState["5"] == 1) {
-                    setAllowedState({...allowedState, 4: true})
+                    setAllowedState({...allowedState, 4: -1})
                     setCurrentState(5)
                 } else if (currentState == 5 && allowedState["6"] == 1) {
-                    setAllowedState({...allowedState, 4: true})
+                    setAllowedState({...allowedState, 4: -1})
                     setCurrentState(6)
                 } else if (currentState == 6 && allowedState["7"] == 1) {
-                    setAllowedState({...allowedState, 4: true})
+                    setAllowedState({...allowedState, 4: -1})
                     setCurrentState(7)
                 }
 
-                if (allowedState[currentState + 1] === true && currentState < 7) setCurrentState(prevState => prevState + 1)
+                if (allowedState[currentState + 1] === -1 && currentState < 7) setCurrentState(prevState => prevState + 1)
             }}>weiter
             </button> : null }
         </div>
