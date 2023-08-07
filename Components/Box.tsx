@@ -76,57 +76,60 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
     return <div className={styles["box"]} style={{
         transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(200%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none",
-        padding: currentState == 7 ? "2rem" : "2rem 2rem 7rem 2rem"
+        padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem"
     }}>
 
         {errorMessage ? <div className={styles["box__error"]}>Bitte fülle zunächst alle Felder aus.</div> : null}
-        <span>Bitte immer vollständig nach unten scrollen</span>
+        {currentState != 7 ? <span>Bitte immer vollständig nach unten scrollen</span> : null}
 
-        {
-            !errorMessage ? <>
-                <div className={styles["box__buttons"]}>
-                    {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>zurück</button> : null}
-                    {currentState < 7 ? <button onClick={event => {
+        <div className={styles["box__bottom"]}>
+            {
+                !errorMessage ? <>
+                    <div className={styles["box__buttons"]}>
+                        {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>zurück</button> : null}
+                        {currentState < 7 ? <button onClick={event => {
 
-                        if (currentState == 2 && allowedState["3"] >= 12) {
-                            setAllowedState({...allowedState, 3: -1})
-                            setCurrentState(3)
-                        } else if (currentState == 3 && allowedState["4"] == 1) {
-                            setAllowedState({...allowedState, 4: -1})
-                            setCurrentState(4)
-                        } else if (currentState == 4 && allowedState["5"] == 1) {
-                            setAllowedState({...allowedState, 4: -1})
-                            setCurrentState(5)
-                        } else if (currentState == 5 && allowedState["6"] == 1) {
-                            setAllowedState({...allowedState, 4: -1})
-                            setCurrentState(6)
-                        } else if (currentState == 6 && allowedState["7"] == 1) {
-                            setAllowedState({...allowedState, 4: -1})
-                            setCurrentState(7)
-                        } else if (allowedState[currentState + 1] === -1 && currentState < 7) {
-                            setCurrentState(prevState => prevState + 1)
-                        } else {
-                            setErrorMessage(true);
-                            setTimeout(() => {
-                                setErrorMessage(false)
-                            }, 5000)
-                        }
-                    }}>weiter
-                    </button> : null }
-                </div>
+                            if (currentState == 2 && allowedState["3"] >= 12) {
+                                setAllowedState({...allowedState, 3: -1})
+                                setCurrentState(3)
+                            } else if (currentState == 3 && allowedState["4"] == 1) {
+                                setAllowedState({...allowedState, 4: -1})
+                                setCurrentState(4)
+                            } else if (currentState == 4 && allowedState["5"] == 1) {
+                                setAllowedState({...allowedState, 4: -1})
+                                setCurrentState(5)
+                            } else if (currentState == 5 && allowedState["6"] == 1) {
+                                setAllowedState({...allowedState, 4: -1})
+                                setCurrentState(6)
+                            } else if (currentState == 6 && allowedState["7"] == 1) {
+                                setAllowedState({...allowedState, 4: -1})
+                                setCurrentState(7)
+                            } else if (allowedState[currentState + 1] === -1 && currentState < 7) {
+                                setCurrentState(prevState => prevState + 1)
+                            } else {
+                                setErrorMessage(true);
+                                setTimeout(() => {
+                                    setErrorMessage(false)
+                                }, 5000)
+                            }
+                        }}>weiter
+                        </button> : null }
+                    </div>
 
 
-                {
-                    currentState < 7 ? <div className={styles["box__points"]}>
-                        {
-                            [1, 2, 3, 4, 5, 6, 7].map(value => {
-                                return <span key={value} className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
-                            })
-                        }
-                    </div> : null
-                }
-            </> : null
-        }
+                    {
+                        currentState < 7 ? <div className={styles["box__points"]}>
+                            {
+                                [1, 2, 3, 4, 5, 6, 7].map(value => {
+                                    return <span key={value} className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
+                                })
+                            }
+                        </div> : null
+                    }
+                </> : null
+            }
+        </div>
+
 
         <div className={styles["box__content"]} style={{display: currentState == 1 ? "block" : "none"}}>
             <h1>Unser Markenversprechen</h1>

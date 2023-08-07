@@ -1,7 +1,7 @@
 .box {
   position: absolute;
   text-align: left;
-  padding: 2rem 2rem 7rem 2rem;
+  padding: 2rem 2rem 6rem;
   height: fit-content;
   max-height: 75vh;
   left: 50%;
@@ -102,10 +102,20 @@
 
   }
 
-  &__buttons {
-    z-index: 5;
+  &__bottom {
+    background: #ffffff;
+    z-index: 10;
     position: absolute;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
     bottom: 2rem;
+    left: 0;
+    width: 100%;
+  }
+
+  &__buttons {
+    position: relative;
     left: 2rem;
 
     > button {
@@ -119,10 +129,8 @@
   }
 
   &__points {
-    z-index: 5;
     display: flex;
-    position: absolute;
-    bottom: 2rem;
+    position: relative;
     right: 2rem;
 
     &__point {
