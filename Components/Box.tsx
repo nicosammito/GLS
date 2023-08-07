@@ -76,7 +76,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
     return <div className={styles["box"]} style={{
         transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(200%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none",
-        padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem 2rem"
+        padding: currentState == 7 ? "2rem" : "2rem 2rem 7rem 2rem"
     }}>
 
         {errorMessage ? <div className={styles["box__error"]}>Bitte fülle zunächst alle Felder aus.</div> : null}

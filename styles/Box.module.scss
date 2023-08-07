@@ -1,7 +1,7 @@
 .box {
   position: absolute;
   text-align: left;
-  padding: 2rem 2rem 6rem 2rem;
+  padding: 2rem 2rem 7rem 2rem;
   height: fit-content;
   max-height: 75vh;
   left: 50%;
@@ -39,8 +39,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    max-height: calc(75vh - 8rem);
-
+    max-height: calc(75vh - 9rem);
 
     ::-webkit-scrollbar {
       width: 14px;
