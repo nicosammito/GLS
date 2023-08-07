@@ -121,7 +121,7 @@
 
   &__points {
     z-index: 5;
-    display: none;
+    display: flex;
     position: absolute;
     bottom: 2rem;
     right: 2rem;
@@ -144,6 +144,7 @@
       }
     }
   }
+
 }
 
 @media (max-width: 1000px) {
@@ -152,15 +153,6 @@
 
     &__points {
       display: none;
-    }
-  }
-}
-
-@media (min-width: 700px) {
-  .box {
-
-    &__points {
-      display: flex;
     }
   }
 }

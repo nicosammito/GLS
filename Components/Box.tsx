@@ -80,6 +80,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
     }}>
 
         {errorMessage ? <div className={styles["box__error"]}>Bitte fülle zunächst alle Felder aus.</div> : null}
+        <span>Bitte immer vollständig nach unten scrollen</span>
 
         {
             !errorMessage ? <>
