@@ -13,6 +13,7 @@
     }
 
     > input[type="radio"] {
+      aspect-ratio: 50/50;
       appearance: none;
       background-color: #fff;
       font: inherit;
@@ -47,9 +48,9 @@
       &:checked+label:before {
         content: "";
         position: absolute;
-        border-radius: 50rem;
+        border-radius: .5rem;
         top: 0;
-        left: -38px;
+        left: -36px;
         width: calc(100% + 46px);
         height: 100%;
         z-index: -1;

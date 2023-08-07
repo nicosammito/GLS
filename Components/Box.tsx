@@ -76,7 +76,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
     return <div className={styles["box"]} style={{
         transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(200%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none",
-        padding: allowedState["7"] == 1 ? "2rem" : "2rem 2rem 6rem 2rem"
+        padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem 2rem"
     }}>
 
         {errorMessage ? <div className={styles["box__error"]}>Bitte fülle zunächst alle Felder aus.</div> : null}
@@ -114,13 +114,16 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
                     </button> : null }
                 </div>
 
-                <div className={styles["box__points"]}>
-                    {
-                        [1, 2, 3, 4, 5, 6, 7].map(value => {
-                            return <span key={value} className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
-                        })
-                    }
-                </div>
+
+                {
+                    currentState < 7 ? <div className={styles["box__points"]}>
+                        {
+                            [1, 2, 3, 4, 5, 6, 7].map(value => {
+                                return <span key={value} className={styles["box__points__point"] + (value == currentState ? (" " + styles["box__points__point-active"]) : "")}/>;
+                            })
+                        }
+                    </div> : null
+                }
             </> : null
         }
 
@@ -309,7 +312,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
                            height={200}/>
                 </div>
             </div>
-            <span>Deine Eigenschaften sind wertvoll für uns:</span>
+            <span>Deine Rolle als Botschafter ist uns besonders wichtig :</span>
             <ul>
                 {calculateWinner(config).description.map(value => {
                     return <li key={value}>{value}</li>
