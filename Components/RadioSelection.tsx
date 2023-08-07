@@ -17,23 +17,24 @@ interface RadioSelectionProps {
 const RadioSelection: FunctionComponent<RadioSelectionProps> = ({name, title, inputs, onSelect, onChange}) => {
 
     const [hasSelected, setHasSelected] = useState(false);
+    const [selected, setSelected] = useState(-1);
 
     return <div>
         <h3>{title}</h3>
         <form className={styles["radio-selection"]}>
             {
                 inputs.map((value, index) => {
-                    return <div key={index} className={styles["radio-selection__input"]}>
+                    return <label key={index} className={styles["radio-selection__input"] + (selected == index ? " " + styles["radio-selection__input-active"] : "")}>
                         <input type={"radio"} name={name} value={value.value} onChange={event => {
                             if (!hasSelected) {
                                 onSelect()
                                 setHasSelected(true)
                             }
 
+                            setSelected(index)
                             onChange(index + 1)
-                        }}/>
-                        <label>{value.label}</label>
-                    </div>
+                        }}/>{value.label}
+                    </label>
                 })
             }
 

@@ -1,15 +1,18 @@
 .radio-selection {
 
   &__input {
-
-    display: flex;
     font-size: 1rem;
     margin: .5rem .7rem;
+    padding: .5rem;
+    position: relative;
+    display: flex;
+    cursor: pointer;
 
-
-    > label {
-      padding: .5rem;
-      position: relative;
+    &-active {
+      border-radius: .5rem;
+      width: fit-content;
+      height: 100%;
+      background: rgba(#fad100, .25);
     }
 
     > input[type="radio"] {
@@ -22,7 +25,6 @@
       margin-right: .5rem;
       border: 2px solid #fad100;
       border-radius: 50rem;
-      transform: translateY(7px);
       cursor: pointer;
       position: relative;
 
@@ -45,21 +47,6 @@
         opacity: 1;
       }
 
-      &:checked+label:before {
-        content: "";
-        position: absolute;
-        border-radius: .5rem;
-        top: 0;
-        left: -36px;
-        width: calc(100% + 46px);
-        height: 100%;
-        z-index: -1;
-        background: rgba(#fad100, .25);
-      }
-
     }
   }
-
-
-
 }
