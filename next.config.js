@@ -17,5 +17,6 @@ module.exports = {
     basePath: basePath,
     images: {
         unoptimized: true
-    }
+    },
+    output: 'standalone'
 }
