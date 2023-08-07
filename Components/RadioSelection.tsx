@@ -23,7 +23,7 @@ const RadioSelection: FunctionComponent<RadioSelectionProps> = ({name, title, in
         <form className={styles["radio-selection"]}>
             {
                 inputs.map((value, index) => {
-                    return <div className={styles["radio-selection__input"]}>
+                    return <div key={index} className={styles["radio-selection__input"]}>
                         <input type={"radio"} name={name} value={value.value} onChange={event => {
                             if (!hasSelected) {
                                 onSelect()

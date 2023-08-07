@@ -21,12 +21,35 @@
   overflow: hidden;
   hyphens: auto;
 
+  &__error {
+    position: absolute;
+    width: calc(100% - 4rem);
+    background: #e2adad;
+    color: #b11414;
+    font-size: 1rem;
+    border-radius: 1rem;
+    bottom: 2rem;
+    padding: 1rem;
+    z-index: 100;
+  }
 
   &__content {
 
     position: relative;
-    overflow-y: auto;
+    overflow-y: scroll;
     max-height: calc(75vh - 8rem);
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, .5);
+      -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    }
+
     > span {
       display: block;
       color: black;

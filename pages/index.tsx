@@ -30,6 +30,7 @@ const Home: NextPage<HomeProps> = () => {
 
                 <Box animated={!!clickedForword}/>
 
+                <div className={"main__name"}>developed by Nico Sammito</div>
 
             </main>
 
