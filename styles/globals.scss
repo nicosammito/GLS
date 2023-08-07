@@ -9,8 +9,7 @@
 }
 
 
-
-html{
+html {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -21,6 +20,23 @@ html{
 
 * {
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: .5rem;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    width: .5rem;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  /* Keep the scrollbar always visible */
+  ::-webkit-scrollbar-thumb:vertical {
+    min-height: 50px;
+  }
 }
 
 body {
@@ -68,7 +84,6 @@ h2 {
   color: black;
   margin: 0;
 }
-
 
 
 @media (max-width: 700px) {

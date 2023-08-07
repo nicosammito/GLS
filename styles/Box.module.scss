@@ -41,23 +41,6 @@
     -webkit-overflow-scrolling: auto;
     max-height: calc(75vh - 8rem);
 
-    &::-webkit-scrollbar {
-      -webkit-appearance: none;
-      width: .5rem;
-      height: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: .5rem;
-      width: .5rem;
-      background-color: rgba(0, 0, 0, .5);
-    }
-
-    /* Keep the scrollbar always visible */
-    ::-webkit-scrollbar-thumb:vertical {
-      min-height: 50px;
-    }
-
     > span {
       display: block;
       color: black;
