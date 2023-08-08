@@ -22,8 +22,9 @@ const Home: NextPage<HomeProps> = () => {
 
             <main>
 
-                <div className={"main__dot"}/>
                 <div className={"main__content"}>
+
+                    <div className={"main__content__dot"}/>
                     <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>Nimm Dir einen Augenblick für unser Markenversprechen</h1>
                     <button style={{opacity: !!clickedForword ? "0%" : "100%"}} onClick={event => setClickedForword(1)}>Starten</button>
                 </div>
