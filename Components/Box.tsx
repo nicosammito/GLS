@@ -79,8 +79,8 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
         padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem"
     }}>
 
-        {errorMessage ? <div className={styles["box__error"]}>Bitte fülle zunächst alle Felder aus.</div> : null}
-        {currentState != 7 ? <span>Bitte immer vollständig nach unten scrollen</span> : null}
+        {errorMessage ? <div className={styles["box__error"]}>Bitte beantworte vorher alle Fragen.</div> : null}
+        {currentState != 7 ? <span>Bitte immer vollständig nach unten scrollen.</span> : null}
 
         <div className={styles["box__bottom"]}>
             {
@@ -110,7 +110,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
                                 setErrorMessage(true);
                                 setTimeout(() => {
                                     setErrorMessage(false)
-                                }, 5000)
+                                }, 3000)
                             }
                         }}>weiter
                         </button> : null }
@@ -138,7 +138,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
 
         <div className={styles["box__content"]} style={{display: currentState == 2 ? "block" : "none"}}>
             <h1>Trifft zu, trifft nicht zu</h1>
-            <span>Bitte wähle jeweils trifft zu oder trifft nicht zu, um dir unser Markenversprechen näher zu bringen.</span>
+            <span>Bitte wähle jeweils trifft zu oder trifft nicht zu, um herauszufinden, welche/r Markenbotschafter/in Du bist.</span>
 
             <RadioSelection title={"Ich bin kreativ"} name={"creative"}
                             onSelect={() => setAllowedState({...allowedState, 3: allowedState["3"] + 1})}
