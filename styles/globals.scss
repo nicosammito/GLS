@@ -37,6 +37,7 @@ body {
 main {
   height: 100%;
   width: 100vw;
+  position: absolute;
 
   &:before {
     position: absolute;

@@ -87,8 +87,9 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
     }
 
     return <div className={styles["box"]} style={{
-        transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(200%) translateX(-50%)",
+        transform: animated ? "translateY(-50%) translateX(-50%)" : "translateY(300%) translateX(-50%)",
         pointerEvents: animated ? "all" : "none",
+        opacity: animated ? "100%" : "0",
         padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem"
     }}>
 
