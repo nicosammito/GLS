@@ -19,7 +19,7 @@ const Home: NextPage<HomeProps> = () => {
             <link rel="icon" href="/favicon.ico"/>
         </Head>
 
-        <main>
+        <main className={!!clickedForword ? "main-active" : ""}>
 
             <div className={"main__content"}>
 

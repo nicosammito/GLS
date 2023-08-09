@@ -29,11 +29,41 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: #141ab1;
-  background: linear-gradient(180deg, #c0e2ad 0%, #c0e2ad 25%, #141ab1 25%, #141ab1 100%);
-  background-repeat: no-repeat;
   display: block;
+  position: relative;
   z-index: 0;
+}
+
+main {
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  transition: 2s ease-in-out all;
+
+  &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 25%;
+    width: 100vw;
+    background: #c0e2ad;
+    z-index: -1;
+    transition: 1s ease-in-out all;
+  }
+
+  &:after {
+    z-index: -1;
+    background: #141ab1;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: 75%;
+    width: 100vw;
+    transition: 1s ease-in-out all;
+  }
+
 }
 
 h1,
@@ -60,6 +90,30 @@ span {
 }
 
 .main {
+
+  &-active {
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      height: 75%;
+      width: 100vw;
+      background: #c0e2ad;
+      z-index: -1;
+    }
+
+    &:after {
+      z-index: -1;
+      background: #141ab1;
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      height: 25%;
+      width: 100vw;
+    }
+  }
 
   &__content {
     text-align: center;
