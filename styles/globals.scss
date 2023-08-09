@@ -37,7 +37,6 @@ body {
 main {
   height: 100%;
   width: 100vw;
-  position: absolute;
 
   &:before {
     position: absolute;
@@ -98,7 +97,7 @@ span {
       left: 0;
       height: 75%;
       width: 100vw;
-      background: #c0e2ad;
+      background: #f3c8d4;
       z-index: -1;
     }
 
