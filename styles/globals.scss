@@ -38,7 +38,6 @@ main {
   height: 100%;
   width: 100vw;
   position: absolute;
-  transition: 2s ease-in-out all;
 
   &:before {
     position: absolute;
@@ -49,7 +48,7 @@ main {
     width: 100vw;
     background: #c0e2ad;
     z-index: -1;
-    transition: 1s ease-in-out all;
+    transition: 1s ease-in-out height;
   }
 
   &:after {
@@ -61,7 +60,7 @@ main {
     left: 0;
     height: 75%;
     width: 100vw;
-    transition: 1s ease-in-out all;
+    transition: 1s ease-in-out height;
   }
 
 }
