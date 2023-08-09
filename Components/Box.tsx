@@ -1,15 +1,28 @@
 import styles from "../styles/Box.module.scss"
-import {FunctionComponent, useState} from "react";
+import {FunctionComponent, useEffect, useState} from "react";
 import RadioSelection from "./RadioSelection";
 import Image from "next/image";
 
 interface BoxProps {
     animated: boolean
+    onChange: (index: number) => void
 }
 
-const Box: FunctionComponent<BoxProps> = ({animated = false}) => {
+const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
-    const [currentState, setCurrentState] = useState(1);
+    const [currentState, setCurrentState] = useState<number>(0);
+
+    useEffect(() => {
+        if (animated) setCurrentState(1);
+    }, [animated])
+
+    useEffect(() => {
+        if (currentState >= 1) {
+            onChange(currentState)
+            console.log(currentState, "sds")
+        }
+    }, [currentState])
+
     const [allowedState, setAllowedState] = useState({
         1: -1,
         2: -1,

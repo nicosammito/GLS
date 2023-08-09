@@ -3,7 +3,7 @@ import {GetServerSideProps, NextPage} from "next";
 
 import styles from '../styles/Home.module.scss';
 import Box from "../Components/Box";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 interface HomeProps {
     staticPassword: boolean
@@ -12,6 +12,11 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = () => {
 
     const [clickedForword, setClickedForword] = useState(0);
+    const [active, setActive] = useState(false);
+
+    useEffect(() => {
+        if (clickedForword == 1) setActive(true);
+    }, [clickedForword])
 
     return <div>
         <Head>
@@ -19,7 +24,7 @@ const Home: NextPage<HomeProps> = () => {
             <link rel="icon" href="/favicon.ico"/>
         </Head>
 
-        <main className={!!clickedForword ? "main-active" : ""}>
+        <main className={active ? "main-active" : ""}>
 
             <div className={"main__content"}>
 
@@ -31,7 +36,12 @@ const Home: NextPage<HomeProps> = () => {
                 </button>
             </div>
 
-            <Box animated={!!clickedForword}/>
+            <Box animated={!!clickedForword} onChange={index => {
+                (index % 2) != 0 ? setActive(true) : setActive(false)
+                console.log((index % 2))
+                console.log(index)
+                console.log((index / 2) % 0)
+            }}/>
 
             <div className={"main__name"}>developed by Nico Sammito</div>
 
