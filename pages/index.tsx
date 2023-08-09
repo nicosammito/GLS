@@ -32,15 +32,12 @@ const Home: NextPage<HomeProps> = () => {
                 <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>Nimm Dir einen Augenblick für
                     unser Markenversprechen</h1>
                 <button style={{opacity: !!clickedForword ? "0%" : "100%"}}
-                        onClick={event => setClickedForword(1)}>Starten
+                        onClick={() => setClickedForword(1)}>Starten
                 </button>
             </div>
 
             <Box animated={!!clickedForword} onChange={index => {
-                (index % 2) != 0 ? setActive(true) : setActive(false)
-                console.log((index % 2))
-                console.log(index)
-                console.log((index / 2) % 0)
+                setActive((index % 2) != 0)
             }}/>
 
             <div className={"main__name"}>developed by Nico Sammito</div>

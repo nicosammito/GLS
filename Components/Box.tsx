@@ -145,7 +145,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         </div>
 
 
-        <div className={styles["box__content"]} style={{display: currentState == 1 ? "block" : "none"}}>
+        <div className={styles["box__content"]} style={{display: currentState <= 1 ? "block" : "none"}}>
             <h1>Unser Markenversprechen</h1>
             <span>Bei GLS liefern wir nicht von A nach B. Wir liefern von Mensch zu Mensch. Wenn wir Pakete sehen, sehen wir nicht einfach nur Pakete. Wir sehen Menschen. Wenn wir an das denken, was in den Paketen ist, sehen wir keine Objekte – wir sehen Emotionen. In den Paketen stecken die Hoffnungen, Träume und Ziele unserer Versender und Empfänger.</span>
         </div>

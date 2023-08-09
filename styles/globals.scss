@@ -29,13 +29,9 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  display: block;
-  z-index: 0;
 }
 
 main {
-  height: 100%;
-  width: 100vw;
 
   &:before {
     position: absolute;
@@ -50,7 +46,7 @@ main {
   }
 
   &:after {
-    z-index: -1;
+    z-index: -2;
     background: #141ab1;
     position: absolute;
     content: "";
@@ -90,31 +86,14 @@ span {
 
   &-active {
 
-    height: 100%;
-    width: 100vw;
-
     &:before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100vw;
       background: #f3c8d4;
-      transition: 1s ease-in-out height;
-      z-index: -1;
+      height: 75%;
     }
 
     &:after {
-      z-index: -1;
       background: #141ab1;
-      position: absolute;
-      transition: 1s ease-in-out height;
-      content: "";
-      bottom: 0;
-      left: 0;
       height: 25%;
-      width: 100vw;
     }
   }
 
