@@ -30,14 +30,12 @@ body {
   padding: 0;
   margin: 0;
   display: block;
-  position: relative;
   z-index: 0;
 }
 
 main {
   height: 100%;
   width: 100vw;
-  position: absolute;
 
   &:before {
     position: absolute;
@@ -94,7 +92,6 @@ span {
 
     height: 100%;
     width: 100vw;
-    position: absolute;
 
     &:before {
       position: absolute;
