@@ -13,30 +13,31 @@ const Home: NextPage<HomeProps> = () => {
 
     const [clickedForword, setClickedForword] = useState(0);
 
-    return (
-        <div>
-            <Head>
-                <title>GLS - Markenversprechen </title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
+    return <div>
+        <Head>
+            <title>GLS - Markenversprechen </title>
+            <link rel="icon" href="/favicon.ico"/>
+        </Head>
 
-            <main>
+        <main>
 
-                <div className={"main__content"}>
+            <div className={"main__content"}>
 
-                    <div className={"main__content__dot"}/>
-                    <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>Nimm Dir einen Augenblick für unser Markenversprechen</h1>
-                    <button style={{opacity: !!clickedForword ? "0%" : "100%"}} onClick={event => setClickedForword(1)}>Starten</button>
-                </div>
+                <div className={"main__content__dot"}/>
+                <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>Nimm Dir einen Augenblick für
+                    unser Markenversprechen</h1>
+                <button style={{opacity: !!clickedForword ? "0%" : "100%"}}
+                        onClick={event => setClickedForword(1)}>Starten
+                </button>
+            </div>
 
-                <Box animated={!!clickedForword}/>
+            <Box animated={!!clickedForword}/>
 
-                <div className={"main__name"}>developed by Nico Sammito</div>
+            <div className={"main__name"}>developed by Nico Sammito</div>
 
-            </main>
+        </main>
 
-        </div>
-    )
+    </div>
 }
 
 export default Home;
