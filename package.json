@@ -8,10 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/react-select": "^5.0.1",
     "next": "^12.3.4",
+    "properties-file": "^3.2.15",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-select": "^5.7.4",
     "sass": "^1.64.2",
+    "swr": "^2.2.0",
     "touch-cli": "^0.0.1"
   },
   "devDependencies": {

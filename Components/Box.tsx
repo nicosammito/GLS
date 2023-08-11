@@ -2,6 +2,7 @@ import styles from "../styles/Box.module.scss"
 import {FunctionComponent, useEffect, useState} from "react";
 import RadioSelection from "./RadioSelection";
 import Image from "next/image";
+import {useLanguage} from "./Layout/Layout";
 
 interface BoxProps {
     animated: boolean
@@ -12,6 +13,9 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
     const [currentState, setCurrentState] = useState<number>(0);
 
+    const [name, setName] = useState<string>("");
+    const language = useLanguage();
+
     useEffect(() => {
         if (animated) setCurrentState(1);
     }, [animated])
@@ -19,13 +23,12 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
     useEffect(() => {
         if (currentState >= 1) {
             onChange(currentState)
-            console.log(currentState, "sds")
         }
     }, [currentState])
 
     const [allowedState, setAllowedState] = useState({
         1: -1,
-        2: -1,
+        2: 0,
         3: 0,
         4: 0,
         5: 0,
@@ -93,14 +96,14 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem"
     }}>
 
-        {errorMessage ? <div className={styles["box__error"]}>Bitte beantworte vorher alle Fragen.</div> : null}
-        {currentState != 7 ? <span>Bitte immer vollständig nach unten scrollen.</span> : null}
+        {errorMessage ? <div className={styles["box__error"]}>Bitte alle Felder ausfüllen.</div> : null}
+        {currentState != 7 ? <span>{language["box.scroll.message"]}</span> : null}
 
         <div className={styles["box__bottom"]}>
             {
                 !errorMessage ? <>
                     <div className={styles["box__buttons"]}>
-                        {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>zurück</button> : null}
+                        {currentState < 7 ? <button onClick={event => currentState > 1 && setCurrentState(prevState => prevState - 1)}>{language["box.button.backwards"]}</button> : null}
                         {currentState < 7 ? <button onClick={event => {
 
                             if (currentState == 2 && allowedState["3"] >= 12) {
@@ -126,7 +129,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
                                     setErrorMessage(false)
                                 }, 3000)
                             }
-                        }}>weiter
+                        }}>{language["box.button.forwards"]}
                         </button> : null }
                     </div>
 
@@ -148,6 +151,11 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         <div className={styles["box__content"]} style={{display: currentState <= 1 ? "block" : "none"}}>
             <h1>Unser Markenversprechen</h1>
             <span>Bei GLS liefern wir nicht von A nach B. Wir liefern von Mensch zu Mensch. Wenn wir Pakete sehen, sehen wir nicht einfach nur Pakete. Wir sehen Menschen. Wenn wir an das denken, was in den Paketen ist, sehen wir keine Objekte – wir sehen Emotionen. In den Paketen stecken die Hoffnungen, Träume und Ziele unserer Versender und Empfänger.</span>
+
+            <input placeholder={"Dein Vorname"} type={"text"} onChange={event => {
+                if (event.target.value != "") setAllowedState({...allowedState, 2: -1});
+                else setAllowedState({...allowedState, 2: 0});
+                setName(event.target.value)}}/>
         </div>
 
         <div className={styles["box__content"]} style={{display: currentState == 2 ? "block" : "none"}}>
@@ -161,7 +169,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
                                 value: "creative_tnz",
                                 label: "Trifft nicht zu"
                             }]}/>
-            <RadioSelection title={"Ich bin ein Vorbild für meine Kollegen"} name={"example"}
+            <RadioSelection title={"Ich wäre gerne ein Vorbild für meine Kollegen"} name={"example"}
                             onSelect={() => setAllowedState({...allowedState, 3: allowedState["3"] + 1})}
                             onChange={(id) => id == 1 ? setConfig({...config, magier: config.magier + 1}) : null}
                             inputs={[{value: "example_tz", label: "Trifft zu"}, {
@@ -324,7 +332,7 @@ const Box: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
         <div className={styles["box__content"]} style={{display: currentState == 7 ? "block" : "none"}}>
             <div className={styles["box__content__heading"]}>
-                <h1>Du bist unser Marken-Botschafter: {calculateWinner(config).name}</h1>
+                <h1>{name}, Du bist unser Marken-Botschafter: {calculateWinner(config).name}</h1>
                 <div className={styles["box__content__heading__image"]}>
                     <Image src={`https://cdn.statically.io/gh/nicosammito/GLS/gh-pages/${calculateWinner(config).image}`} alt={"GLS"} width={200}
                            height={200}/>

@@ -1,5 +1,7 @@
 .radio-selection {
 
+  margin: 0;
+
   &__input {
     font-size: 1rem;
     margin: .5rem .7rem;
@@ -16,13 +18,15 @@
     }
 
     > input[type="radio"] {
-      aspect-ratio: 50/50;
       appearance: none;
+      padding: 0;
       background-color: #fff;
       font: inherit;
       width: 1rem;
       height: 1rem;
-      margin-right: .5rem;
+      aspect-ratio: 50/50;
+      margin: 0 .5rem 0 0;
+      top: 3px;
       border: 2px solid #fad100;
       border-radius: 50rem;
       cursor: pointer;

@@ -1,18 +1,35 @@
 import Head from 'next/head';
-import {GetServerSideProps, NextPage} from "next";
-
-import styles from '../styles/Home.module.scss';
+import {NextPage} from "next";
 import Box from "../Components/Box";
 import {useEffect, useState} from "react";
+import Select from "react-select";
+import {useRouter} from "next/router";
+import {useLanguage} from "../Components/Layout/Layout";
 
 interface HomeProps {
     staticPassword: boolean
 }
 
+type OptionType = {
+    value: string;
+    label: string;
+};
+
+
 const Home: NextPage<HomeProps> = () => {
 
     const [clickedForword, setClickedForword] = useState(0);
     const [active, setActive] = useState(false);
+    const router = useRouter();
+
+    const language = useLanguage();
+
+    console.log(language)
+
+    const options: OptionType[] = [
+        {value: 'de_DE', label: 'German'},
+        {value: 'en_US', label: 'English'}
+    ];
 
     useEffect(() => {
         if (clickedForword == 1) setActive(true);
@@ -29,11 +46,17 @@ const Home: NextPage<HomeProps> = () => {
             <div className={"main__content"}>
 
                 <div className={"main__content__dot"}/>
-                <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>Nimm Dir einen Augenblick für
-                    unser Markenversprechen</h1>
-                <button style={{opacity: !!clickedForword ? "0%" : "100%"}}
-                        onClick={() => setClickedForword(1)}>Starten
-                </button>
+                <div style={{opacity: !!clickedForword ? "0%" : "100%"}}>
+                    <h1 style={{color: "white", opacity: !!clickedForword ? "0%" : "100%"}}>{language["index.heading"]}</h1>
+                    <Select className={"select-language"} classNamePrefix={"select-language"} value={router.locale == "de_DE" ? options[0] : options[1]} onChange={newValue => {
+                        console.log(newValue)
+                        router.push(router.asPath, router.asPath, {locale: `${newValue.value}`})
+                    }} options={options}/>
+                    <button style={{opacity: !!clickedForword ? "0%" : "100%"}}
+                            onClick={() => setClickedForword(1)}>{language["index.start.button"]}
+                    </button>
+                </div>
+
             </div>
 
             <Box animated={!!clickedForword} onChange={index => {

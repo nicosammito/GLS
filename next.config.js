@@ -18,5 +18,10 @@ module.exports = {
     images: {
         unoptimized: true
     },
-    output: 'standalone'
+    output: 'standalone',
+    reactStrictMode: true,
+    i18n: {
+        locales: ['de_DE', 'en_US'],
+        defaultLocale: 'de_DE',
+    }
 }
