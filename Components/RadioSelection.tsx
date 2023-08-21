@@ -1,7 +1,7 @@
 import styles from '../styles/RadioSelection.module.scss';
 import {FunctionComponent, useState} from "react";
 
-interface RadioInput {
+export interface RadioInput {
     value: string,
     label: string
 }

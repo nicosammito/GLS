@@ -36,8 +36,8 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
     const locale = useRouter().locale;
     const { data, error } = useSWR(`${__dirname}./Language/Language_${locale}.properties`, fetcher);
 
-    if (!data) return <div>Loading...</div>
-    if (error) return <div>Failed to load</div>
+    if (!data) return <main>Loading...</main>
+    if (error) return <main>Failed to load...</main>
 
     const languageProperties = getProperties(data)
 

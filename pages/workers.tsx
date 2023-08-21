@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import {NextPage} from "next";
-import BoxMain from "../Components/BoxMain";
 import {useEffect, useState} from "react";
 import Select from "react-select";
 import {useRouter} from "next/router";
 import {useLanguage} from "../Components/Layout/Layout";
+import BoxWorkers from "../Components/BoxWorkers";
 
 interface HomeProps {
     staticPassword: boolean
@@ -24,7 +24,6 @@ const Home: NextPage<HomeProps> = () => {
 
     const language = useLanguage();
 
-    console.log(language)
 
     const options: OptionType[] = [
         {value: 'de_DE', label: 'German'},
@@ -59,7 +58,7 @@ const Home: NextPage<HomeProps> = () => {
 
             </div>
 
-            <BoxMain animated={!!clickedForword} onChange={index => {
+            <BoxWorkers animated={!!clickedForword} onChange={index => {
                 setActive((index % 2) != 0)
             }}/>
 
