@@ -84,7 +84,11 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
                 image: language[`box.last.${index + 1}.image`],
                 description: language[`box.last.${index + 1}.description`]
             }
-        }).sort( () => .5 - Math.random());
+        }).map( (_, i, arrCopy) => {
+            const rand = i + (Math.floor(Math.random() * (arrCopy.length - i)));
+            [arrCopy[rand], arrCopy[i]] = [arrCopy[i], arrCopy[rand]]
+            return arrCopy[i]
+        })
 
 
         const data = dataArray.sort((a, b) => {
