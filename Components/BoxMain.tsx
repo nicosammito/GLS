@@ -46,6 +46,16 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
     const [errorMessage, setErrorMessage] = useState(false)
 
+    const dataArray = useLanguageTranslations("box.last").map((value, index) => {
+        return {
+            name: `Gratulations ${name}! ${value}`,
+            id: index + 1,
+            count: config[language[`box.last.${index + 1}.config`]],
+            image: language[`box.last.${index + 1}.image`],
+            description: language[`box.last.${index + 1}.description`]
+        }
+    }).sort( () => .5 - Math.random());
+
     const calculatePoints = (id: number) => {
         switch (id) {
             case 1:
@@ -69,16 +79,6 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
     }
 
     const calculateWinner = (config): { name: string, id: number, image: string, description: string } => {
-
-        const dataArray = useLanguageTranslations("box.last").map((value, index) => {
-            return {
-                name: `Gratulation ${name}! ${value}`,
-                id: index + 1,
-                count: config[language[`box.last.${index + 1}.config`]],
-                image: language[`box.last.${index + 1}.image`],
-                description: language[`box.last.${index + 1}.description`]
-            }
-        })
 
         const data = dataArray.sort((a, b) => {
             if (a.count > b.count) {
