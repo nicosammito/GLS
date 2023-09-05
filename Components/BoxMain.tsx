@@ -46,15 +46,7 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
     const [errorMessage, setErrorMessage] = useState(false)
 
-    const dataArray = useLanguageTranslations("box.last").map((value, index) => {
-        return {
-            name: `Gratulations ${name}! ${value}`,
-            id: index + 1,
-            count: config[language[`box.last.${index + 1}.config`]],
-            image: language[`box.last.${index + 1}.image`],
-            description: language[`box.last.${index + 1}.description`]
-        }
-    }).sort( () => .5 - Math.random());
+    const [winner, setWinner] = useState<{ name: string, id: number, image: string, description: string }>({name: "", id: 1, image: "", description: ""});
 
     const calculatePoints = (id: number) => {
         switch (id) {
@@ -78,7 +70,20 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         }
     }
 
+    const languageWinner = useLanguageTranslations("box.last")
+
     const calculateWinner = (config): { name: string, id: number, image: string, description: string } => {
+
+        const dataArray = languageWinner.map((value, index) => {
+            return {
+                name: `Gratulations ${name}! ${value}`,
+                id: index + 1,
+                count: config[language[`box.last.${index + 1}.config`]],
+                image: language[`box.last.${index + 1}.image`],
+                description: language[`box.last.${index + 1}.description`]
+            }
+        }).sort( () => .5 - Math.random());
+
 
         const data = dataArray.sort((a, b) => {
             if (a.count > b.count) {
@@ -123,6 +128,8 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
                             } else if (currentState == 6 && allowedState["7"] == 1) {
                                 setAllowedState({...allowedState, 4: -1})
                                 setCurrentState(7)
+                                const preWinner = calculateWinner(config);
+                                setWinner(preWinner);
                             } else if (allowedState[currentState + 1] === -1 && currentState < 7) {
                                 setCurrentState(prevState => prevState + 1)
                             } else {

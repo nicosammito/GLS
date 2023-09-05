@@ -24,7 +24,6 @@ const Home: NextPage<HomeProps> = () => {
 
     const language = useLanguage();
 
-    console.log(language)
 
     const options: OptionType[] = [
         {value: 'de_DE', label: 'German'},

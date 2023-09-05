@@ -45,17 +45,10 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         "mensch": 0
     });
 
+    const [winner, setWinner] = useState<{ name: string, id: number, image: string, description: string }>({name: "", id: 1, image: "", description: ""});
+
     const [errorMessage, setErrorMessage] = useState(false)
 
-    const dataArray = useLanguageTranslations("box.last").map((value, index) => {
-        return {
-            name: `Gratulations ${name}! ${value}`,
-            id: index + 1,
-            count: config[language[`box.last.${index + 1}.config`]],
-            image: language[`box.last.${index + 1}.image`],
-            description: language[`box.last.${index + 1}.description`]
-        }
-    }).sort( () => .5 - Math.random());
 
     const calculatePoints = (id: number) => {
         switch (id) {
@@ -79,9 +72,20 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         }
     }
 
+    const languageWinner = useLanguageTranslations("box.last")
+
     const calculateWinner = (config): { name: string, id: number, image: string, description: string } => {
 
-        console.log(dataArray);
+        const dataArray = languageWinner.map((value, index) => {
+            return {
+                name: `Gratulations ${name}! ${value}`,
+                id: index + 1,
+                count: config[language[`box.last.${index + 1}.config`]],
+                image: language[`box.last.${index + 1}.image`],
+                description: language[`box.last.${index + 1}.description`]
+            }
+        }).sort( () => .5 - Math.random());
+
 
         const data = dataArray.sort((a, b) => {
             if (a.count > b.count) {
@@ -119,7 +123,8 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
                             } else if (currentState == 4 && allowedState["5"] >= 6) {
                                 setAllowedState({...allowedState, 4: -1})
                                 setCurrentState(5)
-                                console.log(config)
+                                const preWinner = calculateWinner(config);
+                                setWinner(preWinner);
                             } else if (allowedState[currentState + 1] === -1 && currentState < 5) {
                                 setCurrentState(prevState => prevState + 1)
                             } else {
@@ -232,15 +237,15 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
 
         <div className={styles["box__content"]} style={{display: currentState == 5 ? "block" : "none"}}>
             <div className={styles["box__content__heading"]}>
-                <h1>{calculateWinner(config).name}</h1>
+                <h1>{winner.name}</h1>
                 <div className={styles["box__content__heading__image"]}>
                     <Image
-                        src={`https://cdn.statically.io/gh/nicosammito/GLS/gh-pages/${calculateWinner(config).image}`}
+                        src={`https://cdn.statically.io/gh/nicosammito/GLS/gh-pages/${winner.image}`}
                         alt={"GLS"} width={200}
                         height={200}/>
                 </div>
             </div>
-            <span>{calculateWinner(config).description}</span>
+            <span>{winner.description}</span>
 
         </div>
 
