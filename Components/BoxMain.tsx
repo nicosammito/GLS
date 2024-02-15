@@ -106,7 +106,7 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
         padding: currentState == 7 ? "2rem" : "2rem 2rem 6rem"
     }}>
 
-        {errorMessage ? <div className={styles["box__error"]}>Bitte alle Felder ausfüllen.</div> : null}
+        {errorMessage ? <div className={styles["box__error"]}>{language["box.error.message"]}</div> : null}
         {currentState != 7 ? <span>{language["box.scroll.message"]}</span> : null}
 
         <div className={styles["box__bottom"]}>
@@ -166,7 +166,7 @@ const BoxMain: FunctionComponent<BoxProps> = ({animated = false, onChange}) => {
             <h1>{language["box.first.title"]}</h1>
             <span>{language["box.first.description"]}</span>
 
-            <input placeholder={"Dein Vorname"} type={"text"} onChange={event => {
+            <input placeholder={language["box.first.input"]} type={"text"} onChange={event => {
                 if (event.target.value != "") setAllowedState({...allowedState, 2: -1});
                 else setAllowedState({...allowedState, 2: 0});
                 setName(event.target.value)
